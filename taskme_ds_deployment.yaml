@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskme-ds-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taskme-ds
+  template:
+    metadata:
+      labels:
+        app: taskme-ds
+    spec:
+      containers:
+      - name: taskme-ds
+        image: dvzpoc/redis:latest
+        ports:
+        - containerPort: 6379
+        imagePullPolicy: ""
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}
